@@ -1,0 +1,15 @@
+# Set zsh as default shell and configure it
+#
+#
+# Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
+#
+# This part of software is released under the terms of the GPLv3 license.
+#
+---
+- name: install zsh
+  apt: state=installed name=zsh
+  tags:
+    - packages
+
+- name: download last version of oh-my-zsh
+  git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=$HOME/.oh-my.zsh

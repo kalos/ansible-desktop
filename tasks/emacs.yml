@@ -1,0 +1,28 @@
+# Install and configure emacs-snapshot
+---
+- name: check if emacs-snapshot apt key is installed
+  shell: "apt-key list | grep '2A41B42C'"
+  ignore_errors: yes
+  register: check_emacs_apt_key
+
+- name: install emacs-snapshot apt key
+  shell: >
+    wget -q -O - http://emacs.naquadah.org/key.gpg | apt-key add -
+  when_boolean: ${check_emacs_apt_key.rc}
+
+- name: copy emacs-snapshot sources
+  copy: >
+    src=files/emacs-snapshot.list
+    dest=/etc/apt/sources.list.d/
+  register: emacs_source_updated
+
+- name: update emacs-snapshot list
+  apt: update_cache=yes
+  when_boolean: ${emacs_source_updated.changed}
+
+- name: install emacs-snapshot
+  apt: state=installed name=emacs-snapshot install_recommends=yes
+#  with_items:
+#    - emacs-snapshot
+#    - less
+#    - psmisc

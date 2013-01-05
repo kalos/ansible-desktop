@@ -1,0 +1,20 @@
+#
+#
+# Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
+#
+# This part of software is released under the terms of the GPLv3 license.
+#
+---
+- name: install system utilities
+  apt: state=installed name=$item
+  with_items:
+    - vim
+    - less
+    - psmisc
+    - htop 
+    - iotop
+    - git
+    - autojump
+    - lftp
+  tags:
+    - packages
