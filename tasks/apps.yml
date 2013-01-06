@@ -8,12 +8,15 @@
 - name: install system utilities
   apt: state=installed name=$item
   with_items:
+    - zsh
     - vim
     - less
     - psmisc
     - htop 
     - iotop
+    - tree
     - git
+    - ack-grep
     - autojump
     - lftp
   tags:

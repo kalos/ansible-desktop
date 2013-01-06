@@ -6,10 +6,16 @@
 # This part of software is released under the terms of the GPLv3 license.
 #
 ---
-- name: install zsh
-  apt: state=installed name=zsh
-  tags:
-    - packages
+- name: pull last version of oh-my-zsh
+  git: >
+    repo=git://github.com/robbyrussell/oh-my-zsh.git
+    dest=/home/$user/.oh-my-zsh
 
-- name: download last version of oh-my-zsh
-  git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=$HOME/.oh-my.zsh
+- name: pull zsh oh-my-zsh config
+  git: >
+    repo=git@github.com:kalos/zsh-omz-config.git
+    dest=/home/$user/.oh-my-zsh/custom
+
+- name: link ~/.zshrc
+  file: src=/home/$user/.oh-my-zsh/custom/.zshrc
+    dest=/home/$user/.zshrc state=link

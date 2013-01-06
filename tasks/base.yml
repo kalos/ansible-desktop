@@ -1,4 +1,4 @@
-# Base settings for debian/APT, configure NTP and sudo
+# Base settings for debian/APT and configure NTP
 #
 #
 # Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>

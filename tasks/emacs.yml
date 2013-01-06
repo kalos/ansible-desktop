@@ -1,4 +1,10 @@
 # Install and configure emacs-snapshot
+#
+#
+# Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
+#
+# This part of software is released under the terms of the GPLv3 license.
+#
 ---
 - name: check if emacs-snapshot apt key is installed
   shell: "apt-key list | grep '2A41B42C'"
@@ -22,7 +28,3 @@
 
 - name: install emacs-snapshot
   apt: state=installed name=emacs-snapshot install_recommends=yes
-#  with_items:
-#    - emacs-snapshot
-#    - less
-#    - psmisc
