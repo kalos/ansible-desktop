@@ -15,6 +15,7 @@
   git: >
     repo=git@github.com:kalos/zsh-omz-config.git
     dest=/home/$user/.oh-my-zsh/custom
+    force=no
 
 - name: link ~/.zshrc
   file: src=/home/$user/.oh-my-zsh/custom/.zshrc

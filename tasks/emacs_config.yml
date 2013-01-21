@@ -10,3 +10,4 @@
   git: >
     repo=git@github.com:kalos/emacs.d.git
     dest=/home/$user/.emacs.d
+    force=no

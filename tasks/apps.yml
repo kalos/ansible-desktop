@@ -1,3 +1,4 @@
+# Install and configure system apps
 #
 #
 # Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
@@ -5,7 +6,7 @@
 # This part of software is released under the terms of the GPLv3 license.
 #
 ---
-- name: install system utilities
+- name: install system apps
   apt: state=installed name=$item
   with_items:
     - zsh
@@ -14,10 +15,24 @@
     - psmisc
     - htop 
     - iotop
-    - tree
+    - rbenv
+    - ruby-build
     - git
+    - unburden-home-dir
+    - tree
     - ack-grep
     - autojump
     - lftp
   tags:
     - packages
+
+- name: enable unburden-home-dir
+  lineinfile: > 
+    dest=/etc/default/unburden-home-dir
+    regexp=^UNBURDEN_HOME
+    line=UNBURDEN_HOME=true
+
+- name: configure unburden-home-dir
+  copy: >
+    src=files/unburden-home-dir.list
+    dest=/etc/unburden-home-dir.list

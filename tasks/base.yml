@@ -60,6 +60,14 @@
   when_boolean: ${dash_reconf.changed}
 # }
 
+# { misc config
+- name: tmpfs config
+  copy: >
+    src=files/tmpfs
+    dest=/etc/default/tmpfs
+    owner=root mode=644
+# }
+
 # { NTP
 - name: install ntpdate
   apt: name=ntpdate state=installed

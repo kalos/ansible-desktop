@@ -1,0 +1,18 @@
+# Configure ruby environment
+#
+#
+# Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
+#
+# This part of software is released under the terms of the GPLv3 license.
+#
+---
+- name: install ruby utilities
+  apt: state=installed name=$item
+  with_items:
+    - rbenv
+    - ruby-build
+  tags:
+    - packages
+
+# TODO
+# istallare il plugin ruby-build nella home
