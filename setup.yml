@@ -8,9 +8,11 @@
 
   tasks:
     - include: tasks/base.yml
-    - include: tasks/apps.yml
-    - include: tasks/user.yml
-    - include: tasks/emacs.yml
+    - include: tasks/apps.yml tags=apps
+    - include: tasks/user.yml tags=user
+    - include: tasks/emacs-snapshot.yml tags=emacs
+    - include: tasks/desktop.yml tags=desktop
+    - include: tasks/vbox.yml tags=vbox
 
 - hosts: localhost
   connection: local
@@ -20,5 +22,4 @@
     - vars.yml
 
   tasks:
-    - include: tasks/zsh.yml
-    - include: tasks/emacs_config.yml
+    - include: tasks/dotfiles.yml tags=dotfiles

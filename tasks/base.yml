@@ -30,7 +30,6 @@
   copy: src=$item dest=/etc/apt/apt.conf.d/ owner=root mode=644
   with_fileglob: files/apt.conf.d/*
 
-
 - name: enable popularity-contest
   lineinfile: >
     dest=/etc/popularity-contest.conf

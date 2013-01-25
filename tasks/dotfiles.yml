@@ -1,0 +1,152 @@
+# simply manage dotfiles
+#
+#
+# Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
+#
+# This part of software is released under the terms of the GPLv3 license.
+#
+---
+# { zsh
+- name: pull last version of oh-my-zsh
+  git: >
+    repo=git://github.com/robbyrussell/oh-my-zsh.git
+    dest=/home/$user/.oh-my-zsh
+  tags: zsh
+
+- name: pull zsh oh-my-zsh config
+  git: >
+    repo=$repo_omz_custom
+    dest=/home/$user/.oh-my-zsh/custom
+    force=no
+  tags: zsh
+
+- name: link ~/.zshrc
+  file: src=/home/$user/.oh-my-zsh/custom/.zshrc
+    dest=/home/$user/.zshrc state=link
+  tags: zsh
+# }
+
+# { emacs
+- name: pull emacs config
+  git: >
+    repo=$repo_emacs
+    dest=/home/$user/.emacs.d
+  tags: emacs
+# }
+
+# { vim
+- name: pull vim-config
+  git: >
+    repo=$repo_vim
+    dest=$dotfiles_dir/vim-config
+  tags: vim
+
+- name: link ~/.vim
+  file: src=$dotfiles_dir/vim-config/.vim
+    dest=/home/$user/.vim state=link
+  tags: vim
+
+- name: link ~/.vimrc
+  file: src=$dotfiles_dir/vim-config/.vimrc
+    dest=/home/$user/.vimrc state=link
+  tags: vim
+# }
+
+# { git
+- name: pull git-config
+  git: >
+    repo=$repo_git
+    dest=$dotfiles_dir/git-config
+  tags: git
+
+- name: link ~/.gitconfig
+  file: src=$dotfiles_dir/git-config/.gitconfig
+    dest=/home/$user/.gitconfig state=link
+  tags: git
+# }
+
+# { i3
+- name: pull i3-config
+  git: >
+    repo=$repo_i3
+    dest=$dotfiles_dir/i3-config
+  tags: i3
+
+- name: link ~/.i3
+  file: src=$dotfiles_dir/i3-config/.i3
+    dest=/home/$user/.i3 state=link
+  tags: i3
+
+- name: link ~/.i3status.conf
+  file: src=$dotfiles_dir/i3-config/.i3status.conf
+    dest=/home/$user/.i3status.conf state=link
+  tags: i3
+# }
+
+# { desktop
+- name: pull desktop-config
+  git: >
+    repo=$repo_desktop
+    dest=$dotfiles_dir/desktop-config
+  tags: desktop
+
+- name: create ~/.pentadactyl/colors directory
+  file: path=/home/$user/.pentadactyl/colors state=directory
+  tags: desktop
+
+- name: link ~/.pentadactyl/colors/zenburn.penta
+  file: src=$dotfiles_dir/desktop-config/.pentadactyl/colors/zenburn.penta
+    dest=/home/$user/.pentadactyl/colors/zenburn.penta state=link
+  tags: desktop
+
+- name: link ~/.pentadactylrc
+  file: src=$dotfiles_dir/desktop-config/.pentadactylrc
+    dest=/home/$user/.pentadactylrc state=link
+  tags: desktop
+
+- name: link ~/.Xresources
+  file: src=$dotfiles_dir/desktop-config/.Xresources
+    dest=/home/$user/.Xresources state=link
+  tags: desktop
+
+- name: link ~/.xsession
+  file: src=$dotfiles_dir/desktop-config/.xsession
+    dest=/home/$user/.xsession state=link
+  tags: desktop
+# }
+
+# { ruby
+- name: pull ruby-config
+  git: >
+    repo=$repo_ruby
+    dest=$dotfiles_dir/ruby-config
+  tags: ruby
+
+- name: link ~/.gemrc
+  file: src=$dotfiles_dir/ruby-config/.gemrc
+    dest=/home/$user/.gemrc state=link
+  tags: ruby
+
+- name: link ~/.irbrc
+  file: src=$dotfiles_dir/ruby-config/.irbrc
+    dest=/home/$user/.irbrc state=link
+  tags: ruby
+
+- name: link ~/.rdebugrc
+  file: src=$dotfiles_dir/ruby-config/.rdebugrc
+    dest=/home/$user/.rdebugrc state=link
+  tags: ruby
+# }
+
+# { scripts
+- name: pull scripts
+  git: >
+    repo=$repo_scripts
+    dest=$dotfiles_dir/scripts
+  tags: scripts
+
+- name: link ~/.bin
+  file: src=$dotfiles_dir/scripts
+    dest=/home/$user/.bin state=link
+  tags: scripts
+# }

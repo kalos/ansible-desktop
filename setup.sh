@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export ANSIBLE_HOME=$HOME/projects/devops/ansible
-export ANSIBLE_PLAY_DESK=$HOME/projects/devops/playbooks/desktop_
+export ANSIBLE_PLAY_DESK=$HOME/projects/devops/playbooks/desktop
 export ANSIBLE_CONFIG=$HOME/Private/ansible_private/ansible.cfg
 
 export PATH=$ANSIBLE_HOME/bin:$PATH

@@ -1,2 +1,13 @@
 ---
 user: kalos
+dotfiles_dir: /home/kalos/projects/configs
+
+# repos
+repo_omz_custom: git@github.com:kalos/zsh-omz-config.git
+repo_emacs: git@github.com:kalos/emacs-config.git
+repo_vim: git@github.com:kalos/vim-config.git
+repo_git: git@github.com:kalos/git-config.git
+repo_i3: git@github.com:kalos/i3-config.git
+repo_desktop: git@github.com:kalos/desktop-config.git
+repo_ruby: git@github.com:kalos/ruby-config.git
+repo_scripts: git@github.com:kalos/scripts.git

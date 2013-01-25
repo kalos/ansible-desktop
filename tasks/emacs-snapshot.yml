@@ -16,6 +16,9 @@
     wget -q -O - http://emacs.naquadah.org/key.gpg | apt-key add -
   when_boolean: ${check_emacs_apt_key.rc}
 
+#- name: install emacs-snapshot apt key
+#  apt_key: url=http://emacs.naquadah.org/key.gpg state=present
+
 - name: copy emacs-snapshot sources
   copy: >
     src=files/emacs-snapshot.list

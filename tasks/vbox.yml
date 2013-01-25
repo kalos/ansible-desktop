@@ -1,0 +1,30 @@
+# Install virtualbox
+#
+#
+# Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
+#
+# This part of software is released under the terms of the GPLv3 license.
+#
+---
+- name: check if vbox apt key is installed
+  shell: "apt-key list | grep '98AB5139'"
+  ignore_errors: yes
+  register: check_vbox_apt_key
+
+- name: install vbox apt key
+  shell: >
+    wget -q -O - http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc | apt-key add -
+  when_boolean: ${check_vbox_apt_key.rc}
+
+- name: copy vbox apt sources
+  copy: >
+    src=files/vbox.list
+    dest=/etc/apt/sources.list.d/
+  register: vbox_source_updated
+
+- name: update vbox list
+  apt: update_cache=yes
+  when_boolean: ${vbox_source_updated.changed}
+
+- name: install vbox
+  apt: state=installed pkg=virtualbox-4.2

@@ -1,0 +1,24 @@
+# Install base desktop packages and copy some gnome session files
+#
+#
+# Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
+#
+# This part of software is released under the terms of the GPLv3 license.
+#
+---
+
+- name: install base desktop apps
+  apt: state=installed name=$item
+  with_items:
+    - xorg
+    - rxvt-unicode-256color
+    - i3
+    - gnome-core
+
+- name: copy i3-gnome.session
+  copy: src=files/i3-gnome.session
+    dest=/usr/share/gnome-session/sessions/i3-gnome.session
+
+- name: copy i3-gnome.desktop
+  copy: src=files/i3-gnome.desktop
+    dest=/usr/share/xsessions/i3-gnome.desktop

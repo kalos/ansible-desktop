@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=i3 + GNOME
+Comment=Dynamic window manager
+TryExec=gnome-session
+Exec=gnome-session-i3
+Type=XSession

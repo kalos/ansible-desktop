@@ -1,0 +1,7 @@
+[GNOME Session]
+Name=i3-gnome
+RequiredComponents=gnome-settings-daemon;
+RequiredProviders=windowmanager;notifications;
+DefaultProvider-windowmanager=i3
+DefaultProvider-notifications=notification-daemon
+DesktopName=i3-gnome
