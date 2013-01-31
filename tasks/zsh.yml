@@ -1,4 +1,4 @@
-# Configure sudo and set zsh as default shell
+# Set zsh as default shell for $user and root
 #
 #
 # Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
@@ -6,21 +6,19 @@
 # This part of software is released under the terms of the GPLv3 license.
 #
 ---
-- name: install sudoers file (NOPASSWD)
-  template: src=templates/sudoers_user.j2
-    dest=/etc/sudoers.d/$user
-    owner=root group=root mode=0440
+- name: install zsh
+  apt: pkg=zsh state=installed
 
-- name: set zsh as default shell for root and $user
+- name: set zsh as default shell for $user and root
   user: shell=/bin/zsh name=$item
   with_items:
     - root
     - $user
 
 - name: link ~/.oh-my-zsh for root
-  file: src=/home/$user/.oh-my-zsh
+  file: src=$user_home/.oh-my-zsh
     dest=/root/.oh-my-zsh state=link
 
 - name: link ~/.zshrc for root
-  file: src=/home/$user/.oh-my-zsh/custom/.zshrc
+  file: src=$user_home/.oh-my-zsh/custom/.zshrc
     dest=/root/.zshrc state=link

@@ -30,4 +30,4 @@
   when_boolean: ${emacs_source_updated.changed}
 
 - name: install emacs-snapshot
-  apt: state=installed name=emacs-snapshot install_recommends=yes
+  apt: state=installed pkg=emacs-snapshot install_recommends=yes

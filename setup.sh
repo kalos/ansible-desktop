@@ -6,7 +6,7 @@ export ANSIBLE_CONFIG=$HOME/Private/ansible_private/ansible.cfg
 
 export PATH=$ANSIBLE_HOME/bin:$PATH
 export PYTHONPATH=$ANSIBLE_HOME/lib:$PYTHONPATH
-export ANSIBLE_LIBRARY=$ANSIBLE_HOME/library:$MANPATH
+export ANSIBLE_LIBRARY=$ANSIBLE_HOME/library
 export MANPATH=$ANSIBLE_HOME/docs/man:$MANPATH
 
 sudo aptitude install -y python2.6 python-paramiko python-yaml python-jinja2 python-apt

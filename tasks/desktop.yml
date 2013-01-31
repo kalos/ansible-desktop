@@ -6,14 +6,14 @@
 # This part of software is released under the terms of the GPLv3 license.
 #
 ---
-
 - name: install base desktop apps
-  apt: state=installed name=$item
+  apt: pkg=$item state=installed
   with_items:
     - xorg
     - rxvt-unicode-256color
     - i3
     - gnome-core
+    - unburden-home-dir
 
 - name: copy i3-gnome.session
   copy: src=files/i3-gnome.session
@@ -22,3 +22,14 @@
 - name: copy i3-gnome.desktop
   copy: src=files/i3-gnome.desktop
     dest=/usr/share/xsessions/i3-gnome.desktop
+
+- name: enable unburden-home-dir
+  lineinfile: > 
+    dest=/etc/default/unburden-home-dir
+    regexp=^UNBURDEN_HOME
+    line=UNBURDEN_HOME=true
+    
+- name: configure unburden-home-dir
+  copy: >
+    src=files/unburden-home-dir.list
+    dest=/etc/unburden-home-dir.list

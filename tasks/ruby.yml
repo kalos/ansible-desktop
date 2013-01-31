@@ -7,12 +7,10 @@
 #
 ---
 - name: install ruby utilities
-  apt: state=installed name=$item
+  apt: pkg=$item state=installed
   with_items:
     - rbenv
     - ruby-build
-  tags:
-    - packages
 
 # TODO
-# istallare il plugin ruby-build nella home
+# install ruby-build plugin in home directory

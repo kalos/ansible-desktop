@@ -1,4 +1,4 @@
-# Base settings for debian/APT and configure NTP
+# Base settings for debian/APT, configure sudo and NTP
 #
 #
 # Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
@@ -18,13 +18,11 @@
   when_boolean: ${apt_sources.changed}
 
 - name: install debian/APT specific packages
-  apt: state=installed name=$item
+  apt: pkg=$item state=installed
   with_items:
     - apt-listchanges
     - etckeeper
     - popularity-contest
-  tags:
-    - packages
 
 - name: copy configuration files for APT
   copy: src=$item dest=/etc/apt/apt.conf.d/ owner=root mode=644
@@ -59,20 +57,21 @@
   when_boolean: ${dash_reconf.changed}
 # }
 
-# { misc config
 - name: tmpfs config
   copy: >
     src=files/tmpfs
     dest=/etc/default/tmpfs
     owner=root mode=644
-# }
+
+- name: install sudoers file (NOPASSWD)
+  template: src=templates/sudoers_user.j2
+    dest=/etc/sudoers.d/$user
+    owner=root group=root mode=0440
 
 # { NTP
 - name: install ntpdate
   apt: name=ntpdate state=installed
   register: ntpdate
-  tags:
-    - packages
 
 - name: exec ntpdate
   command: ntpdate-debian
@@ -80,8 +79,6 @@
 
 - name: install NTP deamon
   apt: name=ntp state=installed
-  tags:
-    - packages
 
 - name: NTP should be running
   service: name=ntp state=running enabled=yes

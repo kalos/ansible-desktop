@@ -7,32 +7,15 @@
 #
 ---
 - name: install system apps
-  apt: state=installed name=$item
+  apt: pkg= $item state=installed
   with_items:
-    - zsh
     - vim
     - less
     - psmisc
     - htop 
     - iotop
-    - rbenv
-    - ruby-build
     - git
-    - unburden-home-dir
     - tree
     - ack-grep
     - autojump
     - lftp
-  tags:
-    - packages
-
-- name: enable unburden-home-dir
-  lineinfile: > 
-    dest=/etc/default/unburden-home-dir
-    regexp=^UNBURDEN_HOME
-    line=UNBURDEN_HOME=true
-
-- name: configure unburden-home-dir
-  copy: >
-    src=files/unburden-home-dir.list
-    dest=/etc/unburden-home-dir.list

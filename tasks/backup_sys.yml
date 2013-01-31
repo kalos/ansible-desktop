@@ -7,7 +7,7 @@
 #
 ---
 - name: install backup apps
-  apt: state=installed name=$item
+  apt: pkg=$item state=installed
   with_items:
     - duplicity
     - anacron

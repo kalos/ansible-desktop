@@ -27,4 +27,4 @@
   when_boolean: ${vbox_source_updated.changed}
 
 - name: install vbox
-  apt: state=installed pkg=virtualbox-4.2
+  apt: pkg=virtualbox-4.2 state=installed
