@@ -10,6 +10,7 @@
     - include: tasks/base.yml
     - include: tasks/apps.yml tags=apps
     - include: tasks/user.yml tags=user
+    - include: tasks/backup_sys.yml tags=backup
     - include: tasks/emacs-snapshot.yml tags=emacs
     - include: tasks/desktop.yml tags=desktop
     - include: tasks/vbox.yml tags=vbox
@@ -23,3 +24,4 @@
 
   tasks:
     - include: tasks/dotfiles.yml tags=dotfiles
+    - include: tasks/backup.yml tags=backup

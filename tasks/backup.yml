@@ -1,0 +1,25 @@
+# Configure backup system
+#
+#
+# Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
+#
+# This part of software is released under the terms of the GPLv3 license.
+#
+---
+- name: copy duplicity backup list
+  copy: src=files/backup.list
+    dest=$backup_list
+    owner=$user mode=600
+
+- name: create duplicity scripts
+  template: src=$item dest=$backup_path/ owner=$user mode=700
+  with_fileglob: templates/backup*.sh
+
+- name: copy script for org files git backup
+  copy: src=files/backup-org-git.sh
+    dest=$backup_path
+    owner=$user mode=700
+
+- name: backup org files every 5 minute
+  cron: name="org backup" user=$user minute="*/5"
+    job="/home/kalos/Private/backup/backup-org-git.sh &> /dev/null"

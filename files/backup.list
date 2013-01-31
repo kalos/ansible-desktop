@@ -1,0 +1,21 @@
+/home/kalos/projects
+/home/kalos/Private
+
+
+/home/kalos/.config
+/home/kalos/.easytag
+/home/kalos/.ecryptfs
+/home/kalos/.emacs.d
+- /home/kalos/.icedove/**/Cache
+/home/kalos/.icedove
+/home/kalos/.kde
+- /home/kalos/.mozilla/**/Cache
+- /home/kalos/.mozilla/**/Cache.Trash
+/home/kalos/.mozilla
+/home/kalos/.purple
+/home/kalos/.remmina
+/home/kalos/.Skype
+/home/kalos/.ssh
+/home/kalos/.yEd
+
+- **

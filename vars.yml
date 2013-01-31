@@ -1,5 +1,6 @@
 ---
 user: kalos
+user_home: /home/$user
 dotfiles_dir: /home/kalos/projects/configs
 
 # repos
@@ -11,3 +12,14 @@ repo_i3: git@github.com:kalos/i3-config.git
 repo_desktop: git@github.com:kalos/desktop-config.git
 repo_ruby: git@github.com:kalos/ruby-config.git
 repo_scripts: git@github.com:kalos/scripts.git
+
+# backup
+backup_path: /home/kalos/Private/backup
+backup_list: $backup_path/backup.list
+backup_script: $backup_path/backup.sh
+backup_script_ext: $backup_path/backup-remote.sh
+# USB
+backup_dest_usb: file:///media/minibig/backup/home
+# remote server
+backup_server_ext: kodame1.libreit.net
+backup_dest_ext: rsync://$backup_server_ext//srv/backup/jiji

@@ -1,0 +1,18 @@
+# Install and configure backup apps
+#
+#
+# Copyright (C) 2013 Calogero Lo Leggio <kalos@nerdrug.org>
+#
+# This part of software is released under the terms of the GPLv3 license.
+#
+---
+- name: install backup apps
+  apt: state=installed name=$item
+  with_items:
+    - duplicity
+    - anacron
+
+- name: copy anacrontab
+  template: >
+    src=templates/anacrontab.j2
+    dest=/etc/anacrontab
