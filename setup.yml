@@ -9,7 +9,7 @@
   tasks:
     - include: tasks/base.yml tags=base
     - include: tasks/apps.yml tags=apps
-    - include: tasks/zsh_sys.yml tags=zsh
+    - include: tasks/zsh.yml tags=zsh
     - include: tasks/backup_sys.yml tags=backup
     - include: tasks/emacs-snapshot.yml tags=emacs
     - include: tasks/desktop.yml tags=desktop
